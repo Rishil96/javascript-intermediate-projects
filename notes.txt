@@ -1,0 +1,7 @@
+Web Storage API provides mechanisms by which browsers can securely store key/value pairs
+
+1. Session Storage: maintains a separate storage area as long as the browser is open.
+2. Local Storage: continues to store data even after the browser is closed.
+
+These are both properites of the window object
+Local storage only stores strings, no array
