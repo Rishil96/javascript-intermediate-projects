@@ -27,9 +27,11 @@
         <div class="form-container">
           <h2>Add Note</h2>
           <hr>
-          <input type="text" id="note-title" placeholder="Note title">
-          <textarea id="note-text" cols="30" rows="10" placeholder="Note details"></textarea>
-          <button id="add-btn">Add Note</button>
+          <form action="">
+            <input type="text" id="note-title" placeholder="Note title">
+            <textarea id="note-text" cols="30" rows="10" placeholder="Note details"></textarea>
+            <button id="add-btn" class="btn btn-lg btn-danger">Add Note</button>
+          </form>
         </div>
         <!-- Notes Container -->
         <div class="notes-container">
@@ -48,7 +50,7 @@
                   </p>
                   <div class="note-cta-btn">
                     <button class="note-btn"><i class="fas fa-trash"></i>Delete</button>
-                    <button class="note-btn"><i class="fas fa-edit"></i>Edit</button>
+                    <button class="note-btn edit-btn"><i class="fas fa-edit"></i>Edit</button>
                   </div>
                 </div>
 
