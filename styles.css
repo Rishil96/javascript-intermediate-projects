@@ -89,7 +89,7 @@ h1 {
   top: 115px;
   left: 450px;
   z-index: 1;
-  animation: move 2s infinite linear;
+  /* animation: move 2s infinite linear; */
 }
 
 .villian-wolf {
@@ -99,7 +99,7 @@ h1 {
 
 /* Animation */
 .animate {
-  animation: jump 0.3s linear0;
+  animation: jump 0.3s linear;
 }
 
 @keyframes jump {
