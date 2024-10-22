@@ -31,11 +31,33 @@ p {
 }
 
 img {
-  width: 100%;
+  width: 70%;
 }
 
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+/* Start here */
+form {
+  position: relative;
+}
+
+form button {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border: none;
+  outline: none;
+}
+
+form i {
+  font-size: 1.6rem;
+  color: var(--light-blue);
+}
+
+.hide {
+  display: none;
 }
