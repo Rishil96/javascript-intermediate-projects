@@ -39,3 +39,15 @@ img {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+.buttons {
+  text-align: center;
+  margin-top: 20rem;
+}
+
+.btn {
+  padding: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  margin: 1rem;
+}
