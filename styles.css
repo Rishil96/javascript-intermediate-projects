@@ -30,9 +30,9 @@ p {
   line-height: 1.5;
 }
 
-img {
-  /* width: 100%; */
-}
+/* img {
+  width: 100%;
+} */
 
 .container {
   max-width: 1200px;
