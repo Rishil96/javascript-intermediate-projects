@@ -39,3 +39,33 @@ img {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+/* Start here */
+body {
+  background: var(--grey);
+}
+
+.box {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-item {
+  position: relative;
+  margin: 5px 0;
+}
+
+.form-item > * {
+  padding: 8px;
+}
+
+.fas {
+  position: absolute;
+  right: 0.8rem;
+  top: 1.5rem;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
