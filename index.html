@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script
       src="https://kit.fontawesome.com/1935d064dd.js"
       crossorigin="anonymous"
@@ -17,33 +18,53 @@
         <form action="" id="form">
           
           <h2>Create an Account</h2>
-
-          <div class="form-control">
-            <label for="">Username</label>
-            <input type="text" id="username" placeholder="Enter Username">
-            <small>Error Message</small>
-          </div>
-          
-          <div class="form-control">
-            <label for="">Email</label>
-            <input type="text" id="email" placeholder="Enter Email">
-            <small>Error Message</small>
-          </div>
           
           <div class="form-control">
             <label for="">Password</label>
             <input type="password" id="password" placeholder="Enter Password">
             <small>Error Message</small>
-          </div>
           
-          <div class="form-control">
-            <label for="">Confirm Password</label>
-            <input type="password" id="password2" placeholder="Confirm Password">
-            <small>Error Message</small>
+            <!-- Eye Icon -->
+            <span class="show-pass"><i class="fas fa-eye" id="eye"></i></span>
+            
+            <!-- Progress bar -->
+            <div class="progress">
+              <div class="progress-bar" id="password-strength"></div>
+            </div>
+
+            <!-- List -->
+             <ul class="form-list">
+              
+              <li>
+                <span class="low-upper-case">
+                  <i class="fas fa-circle"></i>
+                  &nbsp; Lowercase & Uppercase
+                </span>
+              </li>
+              <li>
+                <span class="number">
+                  <i class="fas fa-circle"></i>
+                  &nbsp; Number (0-9)
+                </span>
+              </li>
+              <li>
+                <span class="special-char">
+                  <i class="fas fa-circle"></i>
+                  &nbsp; Special Character (!@#$%^&*)
+                </span>
+              </li>
+              <li>
+                <span class="eight-char">
+                  <i class="fas fa-circle"></i>
+                  &nbsp; Atleast 8 character
+                </span>
+              </li>
+
+             </ul>
+
           </div>
 
-          <button>Submit</button>
-
+          <button>Submit</button>  
         </form>
       </div>
     </section>
