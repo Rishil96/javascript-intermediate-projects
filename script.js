@@ -1,85 +1,113 @@
-// Form Validation
-const form = document.getElementById("form");
-const username = document.getElementById("username");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const password2 = document.getElementById("password2");
+let state,
+    password = document.getElementById("password"),
+    passwordStrength = document.getElementById("password-strength"),
+    lowUpperCase = document.querySelector(".low-upper-case i"),
+    number = document.querySelector(".number i"),
+    specialChar = document.querySelector(".special-char i"),
+    eightChar = document.querySelector(".eight-char i"),
+    showPassword = document.querySelector(".show-pass"),
+    eyeIcon = document.querySelector("#eye");
 
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    checkRequired([username, email, password, password2]);
-    checkLength(username, 5, 16);
-    checkLength(password, 8, 16);
-    checkEmail(email);
-    checkPassword(password, password2);
+showPassword.addEventListener("click", toggle);
+eyeIcon.addEventListener("click", toggleEye);
+password.addEventListener("keyup", () => {
+    let pass = password.value;
+    checkStrength(pass);
 });
 
-// Check required fields
-function checkRequired(inputAll) {
-    inputAll.forEach((input) => {
-        if (input.value.trim() === "") {
-            showError(input, `${getFieldName(input)} is required`);
-        }
-        else {
-            showSuccess(input);
-        }
-    })
-}
 
-
-// Check length
-function checkLength(input, min, max) {
-    if (input.value.length < min) {
-        showError(input, `${getFieldName(input)} must be atleast ${min} characters.`);
-    }
-    else if (input.value.length > max) {
-        showError(input, `${getFieldName(input)} must be less than ${max} characters.`);
+// Toggle password visibility
+function toggle() {
+    if (state) {
+        password.setAttribute("type", "password");
+        state = false;
     }
     else {
-        showSuccess(input);
+        password.setAttribute("type", "text");
+        state = true;
     }
 }
 
 
-// Check email
-function checkEmail(input) {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (re.test(input.value.trim())) {
-        showSuccess(input);
+// Toggle Icon in password field
+function toggleEye() {
+    eyeIcon.classList.toggle("fa-eye-slash");
+}
+
+
+// Check password strength
+function checkStrength(password) {
+    let strength = 0;
+
+    // Check lower and upper case
+    if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+        strength += 1;
+        // lowUpperCase.classList.remove("fa-circle");
+        // lowUpperCase.classList.add("fa-check");
+        addCheck(lowUpperCase);
     } else {
-        showError(input, `Email is not valid`);
+        // lowUpperCase.classList.remove("fa-check");
+        // lowUpperCase.classList.add("fa-circle");
+        removeCheck(lowUpperCase);
+    }
+
+    // Check number
+    if (password.match(/([0-9])/)) {
+        strength += 1;
+        addCheck(number);
+    } else {
+        removeCheck(number);
+    }
+
+    // Check special character
+    if (password.match(/([!,@,#,$,%,^,&,*,?,_,~])/)) {
+        strength += 1;
+        addCheck(specialChar);
+    } else {
+        removeCheck(specialChar);
+    }
+
+    // Check atleast 8 character
+    if (password.length >= 8) {
+        strength += 1;
+        addCheck(eightChar);
+    }
+    else {
+        removeCheck(eightChar);
+    }
+
+    // Update progress bar
+    passwordStrength.classList.remove("pb-danger", "pb-warning", "pb-primary", "pb-success");
+
+    if (strength == 1) {
+        passwordStrength.classList.add("pb-danger");
+        passwordStrength.style.width = "25%";
+    }
+    else if (strength == 2) {
+        passwordStrength.classList.add("pb-warning");
+        passwordStrength.style.width = "50%";
+    }
+    else if (strength == 3) {
+        passwordStrength.classList.add("pb-primary");
+        passwordStrength.style.width = "75%";
+    }
+    else if (strength == 4) {
+        passwordStrength.classList.add("pb-success");
+        passwordStrength.style.width = "100%";
+    }
+    else {
+        passwordStrength.style.width = "5%";
     }
 }
 
-
-// Check password
-function checkPassword(input1, input2) {
-    if (input1.value !== input2.value) {
-        showError(input2, "Passwords do not match");
-    }
+// Add Check Icon
+function addCheck(charRequired) {
+    charRequired.classList.remove("fa-circle");
+    charRequired.classList.add("fa-check");
 }
 
-
-// Show error message
-function showError(input, message) {
-    const formControl = input.parentElement;
-    formControl.className = "form-control error";
-    const small = formControl.querySelector("small");
-    small.innerText = message;
+function removeCheck(charRequired) {
+    charRequired.classList.add("fa-circle");
+    charRequired.classList.remove("fa-check");
 }
-
-
-// Show success
-function showSuccess(input) {
-    const formControl = input.parentElement;
-    formControl.className = "form-control success";
-}
-
-
-// Get field name
-function getFieldName(input) {
-    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-}
-
