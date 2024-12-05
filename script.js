@@ -28,6 +28,8 @@ class ShowAlert {
             alertBox.classList.add("hide");
         }, 5000);
 
+        start();
+
         closeBtn.addEventListener("click", () => {
             alertBox.classList.remove("show");
             alertBox.classList.add("hide");
@@ -48,3 +50,19 @@ main.addEventListener("click", (e) => {
     }
 })
 
+// Progress bar
+function start() {
+    const progress = document.querySelector(".progress");
+    let width = 0;
+    const timeInterval = setInterval(fill, 50);
+
+    function fill() {
+        if (width >= 100) {
+            clearInterval(timeInterval);
+        }
+        else {
+            width++;
+            progress.style.width = width + "%";
+        }
+    }
+}
